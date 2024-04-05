@@ -1,0 +1,130 @@
+/* BrowseBooks.css */
+
+.browse-books-container {
+  overflow: hidden;
+  
+}
+
+.price-inputs {
+  margin-bottom: 10px;
+}
+
+.apply-button {
+  margin-top: 10px;
+}
+
+
+.browse-books-filter {
+  margin-top: 20px;
+  width: 20%;
+  float: left;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-right: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.filter-group {
+  margin-bottom: 20px;
+}
+
+.filter-input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.books-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding: 0 20px; /* Added padding to create space between filters and books */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.pagination {
+  clear: both;
+  margin-top: 20px;
+}
+
+.pagination button {
+  margin-right: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #0056b3;
+}
+
+.pagination button:focus {
+  outline: none;
+}
+
+.book-card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align the items horizontally */
+  margin: 0 12px 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 200px;
+  transition: transform 0.3s ease;
+  height: auto;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+
+.book-image {
+  width: 100%;
+  min-height: 350px;
+  max-height: 350px;
+  overflow: hidden;
+}
+
+.book-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book-details {
+  padding: 10px;
+  flex-grow: 1; /* Allow book details to occupy remaining space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.book-details h3 {
+  margin: 0;
+  font-size: 16px;
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Hide overflowing text */
+  text-overflow: ellipsis; /* Display ellipsis for overflow text */
+}
+
+.book-details p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.ratings {
+  color: gold;
+}
+
+.star-rating {
+  color: gold;
+}
+
+.star-rating .star {
+  margin-right: 3px;
+  font-size: 20px;
+}

@@ -1,0 +1,127 @@
+/* Navbar.css */
+.navbar {
+  background-color: #3fb1b5;
+  padding: 10px 0;
+}
+
+.logo {
+  color: #fff;
+  margin-right: 16px;
+  text-decoration: none;
+}
+
+.logo:hover {
+  text-decoration: none;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  height: 36px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.search-icon-btn {
+  padding: 10px;
+  margin-left: auto;
+}
+
+.search-input {
+  color: #000;
+  width: 100%;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.search-input:focus {
+  background-color: #fff;
+}
+
+.cart-icon {
+  color: #fff;
+}
+
+.sell-book-btn {
+  color: #fff !important;
+  background-color: #ff5722 !important;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.sell-book-btn:hover {
+  background-color: #e64a19 !important;
+}
+
+.menu-icon {
+  color: #fff;
+}
+
+.link {
+  color: #fff;
+  margin-right: 16px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.link:hover {
+  text-decoration: none;
+  
+}
+
+@media screen and (max-width: 960px) {
+  .search-bar {
+    max-width: 300px; /* Adjust as needed */
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .link {
+    display: none; /* Hide links on smaller screens */
+  }
+}
+
+.off-canvas-menu {
+  width: 250px; 
+  display: flex;
+  flex-direction: column;
+}
+
+.close-image {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.menu-content {
+  padding: 20px;
+}
+
+.category-menu,
+.help-menu {
+  margin-top: 10px;
+}
+
+.category-menu,
+.help-menu span {
+  display: block;
+  margin-bottom: 5px;
+}
+.login-btn {
+  background-color: #27AE60 !important;
+  /* margin-right: 5px; */
+}

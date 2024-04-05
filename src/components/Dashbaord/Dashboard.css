@@ -1,0 +1,61 @@
+.dashboard-container {
+  padding: 20px;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.books-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.book-card {
+  width: 240px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.book-image img {
+  width: 100%;
+  height: auto;
+}
+
+.book-details {
+  padding: 10px;
+}
+
+.book-details h3 {
+  margin: 0;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book-details p {
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+.ratings {
+  color: gold;
+}
+
+.star-rating {
+  color: gold;
+}
+
+.star-rating .star {
+  margin-right: 3px;
+  font-size: 20px;
+}

@@ -1,0 +1,110 @@
+/* Book.css */
+
+.book-container {
+  display: flex;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.book-image-container {
+  margin-right: 15px;
+  width: 200px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.book-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.book-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-details h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.book-details p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.book-details .ratings {
+  color: #f90;
+  margin-bottom: 10px;
+  font-size: 1.5rem; /* Increase star size */
+}
+
+.book-details .description {
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.book-details .buttons {
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap */
+  margin-top: auto; /* Push buttons to bottom */
+}
+
+.book-details button {
+  flex: 1; /* Equal width for both buttons */
+  margin-right: 10px; /* Add spacing between buttons */
+  padding: 12px 20px;
+  background-color: #f90;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.book-details button:hover {
+  background-color: #e08000;
+}
+
+.star {
+  color: yellow;
+  font-size: 1.5rem; /* Increase star size */
+}
+
+.ratings {
+  color: #f90;
+  margin-bottom: 10px;
+}
+
+.ratings label {
+  margin-right: 10px;
+}
+
+.ratings select {
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.review {
+  margin-bottom: 20px;
+}
+
+.review label {
+  margin-right: 10px;
+}
+
+
+.review textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  resize: vertical;
+}

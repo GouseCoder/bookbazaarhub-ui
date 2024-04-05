@@ -1,0 +1,38 @@
+/* CategorizedBooks.css */
+
+.categorized-books {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .book-card {
+    width: 250px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .book-image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .book-details {
+    padding: 10px;
+  }
+  
+  .author {
+    font-style: italic;
+  }
+  
+  .ratings {
+    margin-top: 5px;
+  }
+  
+  .price {
+    font-weight: bold;
+  }
+  

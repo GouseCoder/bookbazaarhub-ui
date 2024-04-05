@@ -1,0 +1,13 @@
+.MyCartLabel {
+  margin: 20px ;
+}
+
+.total-price {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.checkout-button {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}

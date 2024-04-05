@@ -1,0 +1,1 @@
+export const ERROR_CODE_CREATED = 201;

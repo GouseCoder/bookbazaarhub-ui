@@ -1,0 +1,41 @@
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+  }
+  
+  .footer-column {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .footer-column h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .footer-column p {
+    font-size: 15px;
+    margin-bottom: 5px;
+    color: white;
+  }
+  
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-column ul li {
+    margin-bottom: 5px;
+  }
+  
+  .social-links a {
+    display: block;
+    margin-bottom: 5px;
+    color: white;
+    text-decoration: none;
+  }
+  
