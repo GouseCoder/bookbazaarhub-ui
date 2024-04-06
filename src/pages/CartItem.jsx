@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, Typography, Button } from '@mui/material';
+import { Card, Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import StarRating from '../utils/Starrating';
 import '../styles/CartItem.css';

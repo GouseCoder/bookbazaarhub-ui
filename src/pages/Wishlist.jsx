@@ -1,61 +1,66 @@
 // Wishlist.js
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom'; // Import Redirect
+import { Link, useNavigate } from 'react-router-dom';
 import { checkToken } from '../utils/auth';
+import { SHOW_WISHLIST_API_URL } from '../utils/ApiList';
 import BookCard from '../components/BookCard/BookCard';
+import Modal from '../utils/Modal';
 import '../styles/Wishlist.css';
 
 const Wishlist = () => {
-  
   const token = checkToken();
   const userId = localStorage.getItem('userId');
+  const navigate = useNavigate();
 
-  const [wishlistData, setWishlistData] = useState(null);
-  const [authenticated, setAuthenticated] = useState(true); // State to manage authentication status
+  const [wishlistData, setWishlistData] = useState({});
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (token) {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get(`https://bookbazaar-book-service.onrender.com/books/wishlist/show?userId=${userId}`, { withCredentials: true });
-          setWishlistData(response.data.dataObject);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-      };
-    
-      fetchData();
-    } else {
-      setAuthenticated(false); // If token doesn't exist, set authentication status to false
-    }
+    const fetchData = async () => {
+      try {
+        if (!token) throw new Error('User not authenticated');
+        const response = await axios.get(`${SHOW_WISHLIST_API_URL}?userId=${userId}`, { withCredentials: true });
+        setWishlistData(response.data.dataObject);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      setWishlistData({});
+      setError(null);
+    };
   }, [token, userId]);
-  
+
+  useEffect(() => {
+    if (!token) {
+      navigate('/login');
+    }
+  }, [token, navigate]);
+
+  const handleCloseModal = () => {
+    setError(null);
+  };
 
   return (
     <div>
-      {token && ( // Render the message only if the user is authenticated
+      {error && <Modal message={error} onClose={handleCloseModal} />}
+      {wishlistData?.wishList && (
         <div>
-          <div>
-            <h2 className="label-header">Checkout the items you like</h2>
-            <div className="wishlist-books">
-              {renderBooks(wishlistData?.wishList)}
-            </div>
+          <h2 className="label-header">Checkout the items you like</h2>
+          <div className="wishlist-books">
+            {wishlistData.wishList.map((wishlistItem) => (
+              <Link key={wishlistItem.Book.bookId} to={`/book/${wishlistItem.Book.bookId}`} className="book-link">
+                <BookCard book={wishlistItem.Book} />
+              </Link>
+            ))}
           </div>
         </div>
       )}
     </div>
-  )
-}
-
-const renderBooks = (books) => {
-  return (
-    books?.map((wishlistItem) => (
-      <Link key={wishlistItem.Book.bookId} to={`/book/${wishlistItem.Book.bookId}`} className="book-link">
-        <BookCard book={wishlistItem.Book} />
-      </Link>
-    ))
   );
 };
 

@@ -10,13 +10,13 @@ const Login = () => {
   const [emailId, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [emailError, setEmailError] = useState(false); // Initialized with false
-  const [passwordError, setPasswordError] = useState(false); // Initialized with false
-  const [submitted, setSubmitted] = useState(false); // State to track form submission
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    // Mark the form as submitted
+  const handleLogin = async (e) => {
+    e.preventDefault();
     setSubmitted(true);
 
     if (validateEmail(emailId) && validatePassword(password)) {
@@ -30,13 +30,7 @@ const Login = () => {
         });
 
         const { token } = response.data;
-        console.log(token);
-
-        // Decode the token to extract user information
         const decodedToken = decodeToken(token);
-        console.log(decodedToken);
-
-        // Store the token and userId in local storage or state as needed
         localStorage.setItem('token', token);
         localStorage.setItem('userId', decodedToken.sub);
         console.log(decodedToken.sub);
@@ -57,28 +51,14 @@ const Login = () => {
   };
 
   const decodeToken = (token) => {
-    // Decoding the token (use your preferred method)
-    // This example assumes the token is a JWT and uses a simple decoding approach
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const decoded = JSON.parse(atob(base64));
     return decoded;
   };
 
-  const handleSignUp = () => {
-    navigate('/signup');
-  };
-
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
   return (
-    <form onSubmit={(e) => { e.preventDefault(); handleLogin(); }}>
+    <form onSubmit={() => { handleLogin(); }}>
       <div className="login-container">
         <Typography variant="h5" gutterBottom>
           Welcome Back!

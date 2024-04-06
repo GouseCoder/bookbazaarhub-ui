@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import Modal from '../utils/Modal';
-import { Typography, TextField, Button, Select, MenuItem, FormControl, InputLabel, Grid, Paper } from '@mui/material';
+import { API_URL } from '../utils/ApiList';
+import { TextField, Button, Select, MenuItem, FormControl, InputLabel, Grid, Paper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Signup.css';
 import bookImage from '../components/Assets/signup.png';
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
@@ -18,7 +21,7 @@ const Signup = () => {
   const [modalMessage, setModalMessage] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
+  
 
   const validateForm = () => {
     let valid = true;
@@ -38,8 +41,6 @@ const Signup = () => {
       newErrors.lastname = 'Last Name is required';
       valid = false;
     }
-
-    // Similarly, add validation rules for other fields
 
     setErrors(newErrors);
     return valid;
@@ -71,7 +72,7 @@ const Signup = () => {
     e.preventDefault();
     if (validateForm()) {
       try {
-        const response = await fetch('https://bookbazaar-user-service.onrender.com/user/v1/register', {
+        const response = await fetch(API_URL + '/user/v1/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -101,6 +102,8 @@ const Signup = () => {
         }
       } catch (error) {
         console.error('Error:', error);
+        setModalMessage('An error occurred. Please try again later.');
+        setShowModal(true);
       }
     }
   };

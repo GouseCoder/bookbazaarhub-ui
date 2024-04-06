@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { TextField, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import { TextField, Button, Select, MenuItem, FormControl } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
-import BookCard from '../components/BookCard/BookCard';
 import '../styles/BrowseBooks.css';
 
 const BrowseBooks = () => {
