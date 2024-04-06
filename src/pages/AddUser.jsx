@@ -64,7 +64,7 @@ const AddUser = () => {
         e.preventDefault();
         if (validateForm()) {
             try {
-                const response = await fetch(`https://bookbazaar-user-service.onrender.com/user/v1/addUserDetails?email=${formData.email}&password=${formData.password}`, {
+                const response = await fetch(`https://bookbazaar-user-service.onrender.com/user/addUserDetails?email=${formData.email}&password=${formData.password}`, {
                     method: 'POST',
                 });
                 const data = await response.json();

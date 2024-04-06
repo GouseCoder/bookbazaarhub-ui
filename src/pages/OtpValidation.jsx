@@ -21,7 +21,7 @@ const OtpValidation = () => {
     }
     
     try {
-      const response = await fetch(`https://bookbazaar-user-service.onrender.com/user/v1/validateotp?emailId=${emailId}&OTP=${otp}`);
+      const response = await fetch(`https://bookbazaar-user-service.onrender.com/user/validateotp?emailId=${emailId}&OTP=${otp}`);
       const data = await response.json();
       if (response.ok && data.dataObject.errorCode === 200) {
         navigate('/addUser');

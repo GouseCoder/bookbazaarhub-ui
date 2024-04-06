@@ -72,7 +72,7 @@ const Signup = () => {
     e.preventDefault();
     if (validateForm()) {
       try {
-        const response = await fetch(API_URL + '/user/v1/register', {
+        const response = await fetch(API_URL + '/user/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

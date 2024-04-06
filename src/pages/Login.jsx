@@ -15,14 +15,13 @@ const Login = () => {
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const handleLogin = async () => {
     setSubmitted(true);
 
     if (validateEmail(emailId) && validatePassword(password)) {
       try {
         // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-        const apiUrl = 'https://bookbazaar-user-service.onrender.com/user/v1/login';
+        const apiUrl = 'https://bookbazaar-user-service.onrender.com/user/login';
 
         const response = await axios.post(apiUrl, {
           emailId: emailId,
@@ -58,7 +57,7 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={() => { handleLogin(); }}>
+    <form onSubmit={(e) => { e.preventDefault(); handleLogin(); }}>
       <div className="login-container">
         <Typography variant="h5" gutterBottom>
           Welcome Back!
