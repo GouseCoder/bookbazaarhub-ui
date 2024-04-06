@@ -34,12 +34,17 @@ const Dashboard = () => {
     let books = [];
 
     // Process last viewed books and recommendations
-    if (dataObject.lastViewdBooks.length > 0) {
-      books.push({ category: 'Pick up from where you left', books: dataObject.lastViewdBooks });
+    if(dataObject.lastViewdBooks) {
+      if (dataObject.lastViewdBooks.length > 0) {
+        books.push({ category: 'Pick up from where you left', books: dataObject.lastViewdBooks });
+      }
     }
-    if (dataObject.recommendations.length > 0) {
-      books.push({ category: 'You might also like', books: dataObject.recommendations });
+    if(dataObject.recommendations) {
+      if (dataObject.recommendations.length > 0) {
+        books.push({ category: 'You might also like', books: dataObject.recommendations });
+      }
     }
+    
     // if (dataObject.trendingBooks.length > 0) {
     //   books.push({ category: 'Pick up from where you left', books: dataObject.lastViewdBooks });
     // }

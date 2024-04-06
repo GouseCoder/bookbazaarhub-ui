@@ -48,9 +48,11 @@ const Signup = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    // Convert phone to a number if it's not empty
+    const processedValue = name === 'phone' && value !== '' ? parseInt(value, 10) : value;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: processedValue,
     });
   };
 
