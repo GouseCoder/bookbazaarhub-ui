@@ -38,7 +38,7 @@ const Dashboard = () => {
     }
 
     if (dataObject.recommendations && dataObject.recommendations.length > 0) {
-      books.push({ category: 'You might also like', books: dataObject.recommendations });
+      books.push({ category: 'Recommended Books for you', books: dataObject.recommendations });
     }
 
     if (dataObject.categorizedBooks) {
