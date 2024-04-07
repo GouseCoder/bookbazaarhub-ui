@@ -31,28 +31,21 @@ const Dashboard = () => {
   };
 
   const processBooksData = (dataObject) => {
-    let books = [];
+    const books = [];
 
-    // Process last viewed books and recommendations
-    if(dataObject.lastViewdBooks) {
-      if (dataObject.lastViewdBooks.length > 0) {
-        books.push({ category: 'Pick up from where you left', books: dataObject.lastViewdBooks });
-      }
+    if (dataObject.lastViewdBooks && dataObject.lastViewdBooks.length > 0) {
+      books.push({ category: 'Checkout from where you have left', books: dataObject.lastViewdBooks });
     }
-    if(dataObject.recommendations) {
-      if (dataObject.recommendations.length > 0) {
-        books.push({ category: 'You might also like', books: dataObject.recommendations });
-      }
-    }
-    
-    // if (dataObject.trendingBooks.length > 0) {
-    //   books.push({ category: 'Pick up from where you left', books: dataObject.lastViewdBooks });
-    // }
 
-    // Process categorized books
+    if (dataObject.recommendations && dataObject.recommendations.length > 0) {
+      books.push({ category: 'You might also like', books: dataObject.recommendations });
+    }
+
     if (dataObject.categorizedBooks) {
-      Object.keys(dataObject.categorizedBooks).forEach((category) => {
-        books.push({ category, books: dataObject.categorizedBooks[category] });
+      dataObject.categorizedBooks.forEach((category) => {
+        Object.keys(category).forEach((categoryName) => {
+          books.push({ category: categoryName, books: category[categoryName] });
+        });
       });
     }
 
@@ -70,24 +63,18 @@ const Dashboard = () => {
       ) : (
         booksData.map((categoryData) => (
           <div className="section" key={categoryData.category}>
-            {categoryData.books.length === 0 ? (
-              <p>No books available in this category</p>
-            ) : (
-              <div className="books-container">
-                {Object.entries(categoryData.books).map(([subCategory, books]) => (
-                  <div key={subCategory}>
-                    <h3>{subCategory}</h3>
-                    <div className="books-subcontainer">
-                      {books.map((book) => (
-                        <Link key={book.bookId} to={`/book/${book.bookId}`} className="book-link">
-                          <BookCard book={book} />
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
+            <h2>{categoryData.category}</h2>
+            <div className="books-container">
+              {categoryData.books.length > 0 ? (
+                categoryData.books.map((book) => (
+                  <Link key={book.bookId} to={`/book/${book.bookId}`} className="book-link">
+                    <BookCard book={book} />
+                  </Link>
+                ))
+              ) : (
+                <p>No books available in this category</p>
+              )}
+            </div>
           </div>
         ))
       )}
