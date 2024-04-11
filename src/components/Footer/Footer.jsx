@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css'
 
 const Footer = () => {
@@ -16,11 +17,11 @@ const Footer = () => {
       <div className="footer-column">
         <h4>Categories</h4>
         <ul>
-          <li>Fiction</li>
-          <li>Science Fiction</li>
-          <li>Mystery</li>
-          <li>Romance</li>
-          <li>Non-fiction</li>
+          <li><Link to="/categorizedBooks?category=Fiction">Fiction</Link></li>
+          <li><Link to="/categorizedBooks?category=Science%20Fiction">Science Fiction</Link></li>
+          <li><Link to="/categorizedBooks?category=Mystery">Mystery</Link></li>
+          <li><Link to="/categorizedBooks?category=Philosophy">Philosophy</Link></li>
+          <li><Link to="/categorizedBooks?category=Classic%20Literature">Classic Literature</Link></li>
         </ul>
       </div>
 
