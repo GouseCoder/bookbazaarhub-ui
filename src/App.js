@@ -17,10 +17,11 @@ import AddUser from './pages/AddUser'
 import CategorizedBooks from './pages/categorizedBooks';
 
 function App() {
+
   return (
     <div>
       <BrowserRouter>
-        <Navbar />
+        <Navbar/>
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/browseBooks" element={<SearchBooks />} />

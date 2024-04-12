@@ -3,13 +3,16 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { fetchDashboardData } from './api';
 import BookCard from '../BookCard/BookCard';
 import './Dashboard.css';
+import { checkToken } from '../../utils/auth';
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [booksData, setBooksData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoggedIn(checkToken());
     const fetchData = async () => {
       try {
         const userId = getUserId();

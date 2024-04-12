@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 // import Modal from '../../utils/Modal'
 import { Link, useNavigate } from 'react-router-dom';
@@ -33,13 +33,16 @@ import CategoryIcon from '@mui/icons-material/Category';
 import SettingsIcon from '@mui/icons-material/Settings';
 import HelpIcon from '@mui/icons-material/Help';
 import ListItemIcon from '@mui/material/ListItemIcon';
-
-import './Navbar.css';
-// import { checkToken } from '../../utils/auth';
+import { checkToken } from '../../utils/auth';
+import axios from 'axios';
 
 const settings = ['Profile', 'Settings', 'Logout'];
 const categories = ['Fiction', 'Romance', 'Biography', 'Psychology', 'Self Growth', 'Horror', 'Historical', 'Kids', 'Spiritual'];
-const helpItems = ['Your Account', 'Customer Support', 'Settings'];
+const helpItems = [
+  { text: 'Your Account', icon: <PersonIcon /> },
+  { text: 'Customer Support', icon: <HelpIcon /> },
+  { text: 'Settings', icon: <SettingsIcon /> }
+];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -48,9 +51,29 @@ const Navbar = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [showCategories, setShowCategories] = React.useState(false);
   const [showHelp, setShowHelp] = React.useState(false);
+  const [cartCount, setCartCount] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const navigate = useNavigate();
-  // const jwtToken = checkToken();
+
+  useEffect(() => {
+    setCartCount(0);
+    const loggedIn = checkToken();
+    setIsLoggedIn(loggedIn);
+
+    if (loggedIn) {
+      const userId = localStorage.getItem('userId');
+      axios.get(`https://bookbazaar-cart-service.onrender.com/cart/cartCount?userId=${userId}`)
+        .then(response => {
+          setCartCount(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching cart count:', error);
+        });
+    } else {
+      setCartCount(0);
+    }
+  }, [isLoggedIn]);
 
   const handleOpenUserMenu = () => {
     setAnchorElUser(!anchorElUser);
@@ -67,8 +90,8 @@ const Navbar = () => {
   const toggleDrawer = (newOpen, path) => () => {
     setOpen(newOpen);
     if (path) {
-      navigate(path);
       setOpen(false);
+      navigate(path);
     }
   };
 
@@ -93,6 +116,7 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
+    setIsLoggedIn(false);
     navigate('/');
   };
 
@@ -182,9 +206,12 @@ const Navbar = () => {
           </div>
 
           {/* Cart Icon */}
-          <IconButton color="inherit" className="cart-icon">
+          <IconButton color="inherit" className="cart-icon" style={{marginRight:'30px', marginTop:'20px'}}>
             <Link to="/cart" className="link">
-              <ShoppingCartIcon />
+              <Tooltip title="View Cart">
+                <ShoppingCartIcon style={{fontSize:'35px', color:'blue'}}/>
+              </Tooltip>
+              {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
             </Link>
           </IconButton>
 
@@ -228,7 +255,7 @@ const Navbar = () => {
             <Box sx={{ flexGrow: 1 }}></Box>
 
             <Box sx={{ flexGrow: 0 }}>
-              {true ? (
+              {isLoggedIn ? (
                 <>
                   <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

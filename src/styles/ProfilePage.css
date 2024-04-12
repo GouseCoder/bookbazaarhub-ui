@@ -1,53 +1,32 @@
-/* ProfilePage.css */
+.container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
 
-.profile-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
-  }
-  
-  .sidebar {
-    width: 200px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-  }
-  
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .sidebar li {
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  .sidebar li.active {
-    background-color: #ddd;
-  }
-  
-  .content {
-    flex: 1;
-    margin-left: 20px;
-  }
-  
-  /* General.css */
-  
-  .general-container {
-    padding: 20px;
-  }
-  
-  .info {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-  }
-  
-  .info p {
-    margin: 5px 0;
-  }
-  
-  /* ChangePass.css, ChangeEmail.css, ChangePhone.css */
-  
-  /* Add your specific styling for these components as needed */
-  
+.title {
+  margin-bottom: 30px;
+  color: #333;
+  text-align: center;
+}
+
+.paper {
+  padding: 40px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.details {
+  margin-top: 40px;
+}
+
+.details p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.details strong {
+  color: #555;
+}
+
