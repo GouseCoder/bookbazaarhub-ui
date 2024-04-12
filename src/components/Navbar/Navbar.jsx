@@ -133,8 +133,6 @@ const Navbar = () => {
       <List>
         {[
           { text: 'Profile', icon: <PersonIcon />, path: '/profile' },
-          { text: 'New Releases', icon: <NewReleasesIcon /> },
-          { text: 'Trending', icon: <TrendingUpIcon /> },
           { text: 'Popular', icon: <StarIcon />, path: '/popularBooks' },
           {
             text: 'Shop By Category',
